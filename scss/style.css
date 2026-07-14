@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Poppins";
 }
@@ -7,14 +11,23 @@ body a {
 }
 
 .main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  position: relative;
-  z-index: 100;
+}
+.main-header.is-scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.main-header.is-hidden {
+  transform: translateY(-100%);
 }
 .main-header .logo a {
   font-size: 24px;
@@ -39,6 +52,10 @@ body a {
   height: auto;
 }
 
+main {
+  padding-top: 70px;
+}
+
 .main-menu {
   position: fixed;
   top: 0;
@@ -49,7 +66,7 @@ body a {
   height: 100%;
   box-sizing: border-box;
   background: #fff;
-  z-index: 300;
+  z-index: 1300;
   padding: 20px;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
@@ -192,7 +209,7 @@ body a {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
-  z-index: 200;
+  z-index: 1200;
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease;
@@ -200,4 +217,288 @@ body a {
 .menu-dim.active {
   opacity: 1;
   visibility: visible;
+}
+
+.body-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+}
+.body-map-container .body-map-header .body-map-title {
+  color: #0A84FF;
+  text-align: center;
+}
+.body-map-container .body-silhouette {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pulse-marker {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #30D158;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+.pulse-marker::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: #30D158;
+  z-index: -1;
+  animation: pulse-wave 2s infinite ease-out;
+}
+
+.marker-neck {
+  top: 21%;
+  left: 50%;
+}
+
+.marker-shoulder {
+  top: 25%;
+  left: 74%;
+}
+
+.marker-spine {
+  top: 39%;
+  left: 50%;
+}
+
+.marker-pelvis {
+  top: 45%;
+  left: 66%;
+}
+
+.marker-elbow {
+  top: 40%;
+  left: 80%;
+}
+
+.marker-wrist {
+  top: 52%;
+  left: 85%;
+}
+
+.marker-knee {
+  top: 71%;
+  left: 62%;
+}
+
+.bottom-sheet-dim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1400;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.bottom-sheet-dim.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px 20px 40px;
+  z-index: 1500;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.bottom-sheet.active {
+  transform: translateY(0);
+}
+.bottom-sheet .sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.bottom-sheet .sheet-header .sheet-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1C1C1E;
+}
+.bottom-sheet .sheet-header .btn-sheet-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #888;
+  display: block;
+  padding: 5px 10px;
+}
+.bottom-sheet .sheet-header .btn-sheet-close:hover {
+  color: #1C1C1E;
+}
+.bottom-sheet .sheet-body .sheet-desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+}
+.bottom-sheet .sheet-body .symptom-btn {
+  width: 100%;
+  text-align: left;
+  background: #f2f2f7;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.bottom-sheet .sheet-body .symptom-btn:active, .bottom-sheet .sheet-body .symptom-btn:hover {
+  background: rgba(48, 209, 88, 0.1);
+  border-color: #30d158;
+}
+.bottom-sheet .sheet-body .symptom-btn .symptom-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1C1C1E;
+  margin-bottom: 6px;
+}
+.bottom-sheet .sheet-body .symptom-btn .symptom-text {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.recommend-routine {
+  padding: 20px 0 50px;
+  background: #fff;
+}
+.recommend-routine .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+.recommend-routine .section-header .section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1C1C1E;
+}
+.recommend-routine .section-header .btn-more {
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.recommend-routine .section-header .btn-more:hover {
+  color: #0A84FF;
+}
+.recommend-routine .routine-swiper {
+  padding: 10px 20px 20px;
+}
+.recommend-routine .routine-swiper .swiper-slide {
+  height: auto;
+}
+.recommend-routine .routine-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.recommend-routine .routine-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.recommend-routine .routine-card .card-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #F2F2F7;
+  overflow: hidden;
+}
+.recommend-routine .routine-card .card-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.3s;
+}
+.recommend-routine .routine-card:hover .card-img img {
+  transform: scale(1.05);
+}
+.recommend-routine .routine-card .card-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.recommend-routine .routine-card .card-info .tags {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.recommend-routine .routine-card .card-info .tags span {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+.recommend-routine .routine-card .card-info .tags .tag-time {
+  background: rgba(10, 132, 255, 0.1);
+  color: #0A84FF;
+}
+.recommend-routine .routine-card .card-info .tags .tag-level {
+  background: rgba(48, 209, 88, 0.1);
+  color: rgb(37.4545454545, 168.5454545455, 70.023715415);
+}
+.recommend-routine .routine-card .card-info .routine-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1C1C1E;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.recommend-routine .routine-card .card-info .routine-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+  margin-top: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes pulse-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
 }/*# sourceMappingURL=style.css.map */

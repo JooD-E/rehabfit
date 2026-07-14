@@ -6,8 +6,10 @@
     <title>Re:HAB FIT</title>
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/style.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
 
@@ -82,7 +84,306 @@
     <div class="menu-dim" id="menu-dim"></div>
 
     <main>
-        
+        <section class="body-map-container">
+            <div class="body-map-header">
+                <h2 class="body-map-title">
+                    환부를 클릭해 주세요!
+                </h2>
+            </div>
+            <img src="img/human1.png" alt="인체 정면 실루엣" class="body-silhouette">
+
+            <button type="button" class="pulse-marker marker-neck" data-target="sheet-neck" aria-label="목 솔루션"></button>
+            <button type="button" class="pulse-marker marker-shoulder" data-target="sheet-shoulder" aria-label="어깨 솔루션"></button>
+            <button type="button" class="pulse-marker marker-spine" data-target="sheet-spine" aria-label="척추 솔루션"></button>
+            <button type="button" class="pulse-marker marker-pelvis" data-target="sheet-pelvis" aria-label="골반 솔루션"></button>
+            <button type="button" class="pulse-marker marker-elbow" data-target="sheet-elbow" aria-label="팔꿈치 솔루션"></button>
+            <button type="button" class="pulse-marker marker-wrist" data-target="sheet-wrist" aria-label="손목 솔루션"></button>
+            <button type="button" class="pulse-marker marker-knee" data-target="sheet-knee" aria-label="무릎 솔루션"></button>
+        </section>
+
+        <section class="bottom-sheet-area">
+            <div class="bottom-sheet-dim" id="sheet-dim"></div>
+
+            <!--============================== 목 =====================================-->
+            <div class="bottom-sheet" id="sheet-neck">
+                <div class="sheet-header">
+                    <h3 class="sheet-title"> 목 (Neck)</h3>
+                    <button type="button" class="btn-sheet-close" aria-label="닫기">X</button>
+                </div>
+
+                <div class="sheet-body">
+                    <p class="sheet-desc">최근 겪고 있는 증상을 선택해 주세요</p>
+
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">거북목 / 일자목 증상</strong>
+                        <span class="symptom-text">뒷목이 항상 뻐근하고 두통이 잦아요</span>
+                    </button>
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">경추 추간판 탈출증</strong>
+                        <span class="symptom-text">목부터 어깨, 팔, 손끝까지 저린 느낌이 나요</span>
+                    </button>
+                </div>
+            </div>
+
+            <!--============================== 어깨 =====================================-->
+            <div class="bottom-sheet" id="sheet-shoulder">
+                <div class="sheet-header">
+                    <h3 class="sheet-title"> 어깨 (Shoulder)</h3>
+                    <button type="button" class="btn-sheet-close" aria-label="닫기">X</button>
+                </div>
+
+                <div class="sheet-body">
+                    <p class="sheet-desc">최근 겪고 있는 증상을 선택해 주세요</p>
+
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">어깨 충돌증후군</strong>
+                        <span class="symptom-text">팔을 머리 위로 들어 올릴 때 찝히듯 아파요</span>
+                    </button>
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">전방활주 / 라운드 숄더</strong>
+                        <span class="symptom-text">어깨가 앞으로 말려있고, 등 뒤쪽이 뻐근해요</span>
+                    </button>
+                </div>
+            </div>
+
+            <!--============================== 척추 =====================================-->
+            <div class="bottom-sheet" id="sheet-spine">
+                <div class="sheet-header">
+                    <h3 class="sheet-title"> 척추 (Spine)</h3>
+                    <button type="button" class="btn-sheet-close" aria-label="닫기">X</button>
+                </div>
+
+                <div class="sheet-body">
+                    <p class="sheet-desc">최근 겪고 있는 증상을 선택해 주세요</p>
+
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">요추 추간판 탈출증 (허리디스크)</strong>
+                        <span class="symptom-text">허리를 앞으로 숙일 때 아프고 다리까지 당겨요</span>
+                    </button>
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">요부 염좌 (근육/인대 손상)</strong>
+                        <span class="symptom-text">무거운 걸 들거나 갑자기 움직일 때 삐끗했어요</span>
+                    </button>
+                </div>
+            </div>
+
+            <!--============================== 골반 =====================================-->
+            <div class="bottom-sheet" id="sheet-pelvis">
+                <div class="sheet-header">
+                    <h3 class="sheet-title"> 골반 (Pelvis)</h3>
+                    <button type="button" class="btn-sheet-close" aria-label="닫기">X</button>
+                </div>
+
+                <div class="sheet-body">
+                    <p class="sheet-desc">최근 겪고 있는 증상을 선택해 주세요</p>
+
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">골반 전/후방 경사 (불균형)</strong>
+                        <span class="symptom-text">오래 서 있거나 앉아있으면 엉덩이 쪽이 뻐근해요</span>
+                    </button>
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">고관절 충돌증후군 (FAI)</strong>
+                        <span class="symptom-text">양반다리를 하거나 다리를 접을 때 골반 안 쪽이 찝혀요</span>
+                    </button>
+                </div>
+            </div>
+
+            <!--============================== 팔꿈치 =====================================-->
+            <div class="bottom-sheet" id="sheet-elbow">
+                <div class="sheet-header">
+                    <h3 class="sheet-title"> 팔꿈치 (Elbow)</h3>
+                    <button type="button" class="btn-sheet-close" aria-label="닫기">X</button>
+                </div>
+
+                <div class="sheet-body">
+                    <p class="sheet-desc">최근 겪고 있는 증상을 선택해 주세요</p>
+
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">외측 상과염 (테니스 엘보)</strong>
+                        <span class="symptom-text">물건을 들거나 손목을 위로 젖힐 때 팔꿈치 바깥쪽이 아파요</span>
+                    </button>
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">내측 상과염 (골프 엘보)</strong>
+                        <span class="symptom-text">무언가를 강하게 당길 때 팔꿈치 안쪽이 욱신거려요</span>
+                    </button>
+                </div>
+            </div>
+
+            <!--============================== 손목 =====================================-->
+            <div class="bottom-sheet" id="sheet-wrist">
+                <div class="sheet-header">
+                    <h3 class="sheet-title"> 손목 (Wrist)</h3>
+                    <button type="button" class="btn-sheet-close" aria-label="닫기">X</button>
+                </div>
+
+                <div class="sheet-body">
+                    <p class="sheet-desc">최근 겪고 있는 증상을 선택해 주세요</p>
+
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">손목 터널 증후군</strong>
+                        <span class="symptom-text">키보드나 마우스를 오래 쓰면 손가락이 저려요</span>
+                    </button>
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">손목 건초염 (드퀘르뱅 증후군)</strong>
+                        <span class="symptom-text">엄지 손가락을 굽히거나 손목을 꺾을 때 찌릿해요</span>
+                    </button>
+                </div>
+            </div>
+
+            <!--============================== 무릎 =====================================-->
+            <div class="bottom-sheet" id="sheet-knee">
+                <div class="sheet-header">
+                    <h3 class="sheet-title"> 무릎 (knee)</h3>
+                    <button type="button" class="btn-sheet-close" aria-label="닫기">X</button>
+                </div>
+
+                <div class="sheet-body">
+                    <p class="sheet-desc">최근 겪고 있는 증상을 선택해 주세요</p>
+
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">연골연화증 (슬개대퇴 통증)</strong>
+                        <span class="symptom-text">계단을 오르내릴 때 무릎 앞쪽이 시큰거려요</span>
+                    </button>
+                    <button type="button" class="symptom-btn">
+                        <strong class="symptom-title">반월상 연골판 손상</strong>
+                        <span class="symptom-text">무릎을 굽히고 펼 때 무언가 걸리는 느낌이나 소리가 나요</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommend-routine">
+            <div class="section-header">
+                <h2 class="section-title">추천 재활 루틴</h2>
+                <a href="#" class="btn-more">전체보기</a>
+            </div>
+
+            <div class="swiper routine-swiper">
+                <div class="swiper-wrapper">
+                    <!-- ============================= 목 =============================-->
+                    <div class="swiper-slide">
+                        <a href="#" class="routine-card">
+                            <div class="card-img">
+                                <img src="img/streching-neck.jpg" alt="수건 활용 목 스트레칭">
+                            </div>
+                            <div class="card-info">
+                                <div class="tags">
+                                    <span class="tag-time">10분</span>
+                                    <span class="tag-level">쉬움</span>
+                                </div>
+                                <h3 class="routine-title">하루 10분 거북목 탈출 스트레칭</h3>
+                                <p class="routine-desc">일자목과 거북목을 교정하는 부드러운 경추 신전 운동</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ============================= 어깨 =============================-->
+                    <div class="swiper-slide">
+                        <a href="#" class="routine-card">
+                            <div class="card-img">
+                                <img src="img/streching-neck.jpg" alt="수건 활용 목 스트레칭">
+                            </div>
+                            <div class="card-info">
+                                <div class="tags">
+                                    <span class="tag-time">10분</span>
+                                    <span class="tag-level">쉬움</span>
+                                </div>
+                                <h3 class="routine-title">하루 10분 거북목 탈출 스트레칭</h3>
+                                <p class="routine-desc">일자목과 거북목을 교정하는 부드러운 경추 신전 운동</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ============================= 허리 =============================-->
+                    <div class="swiper-slide">
+                        <a href="#" class="routine-card">
+                            <div class="card-img">
+                                <img src="img/streching-neck.jpg" alt="수건 활용 목 스트레칭">
+                            </div>
+                            <div class="card-info">
+                                <div class="tags">
+                                    <span class="tag-time">10분</span>
+                                    <span class="tag-level">쉬움</span>
+                                </div>
+                                <h3 class="routine-title">하루 10분 거북목 탈출 스트레칭</h3>
+                                <p class="routine-desc">일자목과 거북목을 교정하는 부드러운 경추 신전 운동</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ============================= 허리 =============================-->
+                    <div class="swiper-slide">
+                        <a href="#" class="routine-card">
+                            <div class="card-img">
+                                <img src="img/streching-neck.jpg" alt="수건 활용 목 스트레칭">
+                            </div>
+                            <div class="card-info">
+                                <div class="tags">
+                                    <span class="tag-time">10분</span>
+                                    <span class="tag-level">쉬움</span>
+                                </div>
+                                <h3 class="routine-title">하루 10분 거북목 탈출 스트레칭</h3>
+                                <p class="routine-desc">일자목과 거북목을 교정하는 부드러운 경추 신전 운동</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ============================= 골반 =============================-->
+                    <div class="swiper-slide">
+                        <a href="#" class="routine-card">
+                            <div class="card-img">
+                                <img src="img/streching-neck.jpg" alt="수건 활용 목 스트레칭">
+                            </div>
+                            <div class="card-info">
+                                <div class="tags">
+                                    <span class="tag-time">10분</span>
+                                    <span class="tag-level">쉬움</span>
+                                </div>
+                                <h3 class="routine-title">하루 10분 거북목 탈출 스트레칭</h3>
+                                <p class="routine-desc">일자목과 거북목을 교정하는 부드러운 경추 신전 운동</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ============================= 팔꿈치/손목 =============================-->
+                    <div class="swiper-slide">
+                        <a href="#" class="routine-card">
+                            <div class="card-img">
+                                <img src="img/streching-neck.jpg" alt="수건 활용 목 스트레칭">
+                            </div>
+                            <div class="card-info">
+                                <div class="tags">
+                                    <span class="tag-time">10분</span>
+                                    <span class="tag-level">쉬움</span>
+                                </div>
+                                <h3 class="routine-title">하루 10분 거북목 탈출 스트레칭</h3>
+                                <p class="routine-desc">일자목과 거북목을 교정하는 부드러운 경추 신전 운동</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ============================= 무릎 =============================-->
+                    <div class="swiper-slide">
+                        <a href="#" class="routine-card">
+                            <div class="card-img">
+                                <img src="img/streching-neck.jpg" alt="수건 활용 목 스트레칭">
+                            </div>
+                            <div class="card-info">
+                                <div class="tags">
+                                    <span class="tag-time">10분</span>
+                                    <span class="tag-level">쉬움</span>
+                                </div>
+                                <h3 class="routine-title">하루 10분 거북목 탈출 스트레칭</h3>
+                                <p class="routine-desc">일자목과 거북목을 교정하는 부드러운 경추 신전 운동</p>
+                            </div>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
     </main>
     
 </body>
