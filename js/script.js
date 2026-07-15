@@ -102,5 +102,5 @@ document.addEventListener('DOMContentLoaded', function(){
                 spaceBetween: 24,
             }
         }
-    })
+    });
 });
