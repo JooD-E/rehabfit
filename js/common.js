@@ -57,5 +57,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     });
 
-
+    document.querySelectorAll('.depth2-list a').forEach(function(link){
+        link.addEventListener('click', closeMenu);
+    });
 });

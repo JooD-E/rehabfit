@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     pcTabBtns.forEach(function(btn){
         btn.addEventListener('click', function(){
-
+            
             pcTabBtns.forEach(function(item){
                 item.classList.remove('active');
             });
@@ -66,6 +66,17 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     const pcMediaQuery = window.matchMedia('(min-width: 1024px)');
+
+    const symptomBtns = document.querySelectorAll('.symptom-btn');
+
+    symptomBtns.forEach(function(btn){
+        btn.addEventListener('click', function(){
+            const parentSheet = this.closest('.bottom-sheet');
+            const bodyPart = parentSheet.id.replace('sheet-','');
+
+            window.location.href = 'solution.html#' + bodyPart;
+        });
+    });
 
     function handleScreenResize(e) {
         if (e.matches){
