@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -526,26 +527,21 @@ main {
   margin-bottom: 16px;
   color: #1C1C1E;
 }
-.solution-content .info-block ul, .solution-content .info-block ol {
+.solution-content .info-block.symptom {
+  border-left-color: #FF3B30;
+}
+.solution-content .info-block.symptom ul {
   padding-left: 20px;
 }
-.solution-content .info-block ul li, .solution-content .info-block ol li {
+.solution-content .info-block.symptom ul li {
+  list-style: disc;
   font-size: 15px;
   line-height: 1.6;
   color: #555;
   margin-bottom: 10px;
 }
-.solution-content .info-block ul li:last-child, .solution-content .info-block ol li:last-child {
+.solution-content .info-block.symptom ul li:last-child {
   margin-bottom: 0;
-}
-.solution-content .info-block ul li {
-  list-style: disc;
-}
-.solution-content .info-block ol li {
-  list-style: decimal;
-}
-.solution-content .info-block.symptom {
-  border-left-color: #FF3B30;
 }
 .solution-content .info-block.self-check {
   border-left-color: #FF9500;
@@ -553,19 +549,271 @@ main {
 .solution-content .info-block.exercise {
   border-left-color: #30D158;
 }
-.solution-content .info-block.exercise ol li {
-  margin-bottom: 16px;
+.solution-content .check-guide {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7A4E00;
+  background: #FFF4E6;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 3px solid #FF9500;
 }
-.solution-content .info-block.exercise ol li strong {
+.solution-content .diagnosis-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (min-width: 1024px) {
+  .solution-content .diagnosis-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+  }
+}
+.solution-content .diagnosis-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #FFF4E6, #FFE9D0);
+  border: 2px dashed #FFB84D;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.solution-content .diagnosis-image::before {
+  content: "📋 자가진단 이미지";
+  position: absolute;
+  color: #B47B2A;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 0;
+}
+.solution-content .diagnosis-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 1024px) {
+  .solution-content .diagnosis-image {
+    flex: 0 0 40%;
+    aspect-ratio: 1/1;
+  }
+}
+.solution-content .diagnosis-list {
+  padding: 0;
+  flex: 1;
+}
+.solution-content .diagnosis-list li {
+  list-style: none;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #F2F2F7;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.solution-content .diagnosis-list li:hover {
+  background: #FFF4E6;
+  border-color: #FFDCA8;
+}
+.solution-content .diagnosis-list li:last-child {
+  margin-bottom: 0;
+}
+.solution-content .diagnosis-list li .check-title {
   display: block;
   font-size: 15px;
-  color: rgb(37.4545454545, 168.5454545455, 70.023715415);
-  margin-bottom: 4px;
+  font-weight: 700;
+  color: rgb(204, 119.2, 0);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #FFB84D;
 }
-.solution-content .info-block.exercise ol li p {
-  font-size: 14px;
-  color: #666;
+.solution-content .diagnosis-list li p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #555;
+  margin-bottom: 6px;
+}
+.solution-content .diagnosis-list li p:last-child {
+  margin-bottom: 0;
+}
+.solution-content .diagnosis-list li p .label {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 11px;
+  color: #fff;
+  background: #FF9500;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.solution-content .diagnosis-list li .check-result {
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+.solution-content .diagnosis-list li .check-result .label {
+  background: rgb(204, 119.2, 0);
+}
+.solution-content .exercise-guide {
+  font-size: 13px;
   line-height: 1.5;
+  color: #1E5A2E;
+  background: #E8F5E9;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 3px solid #30D158;
+}
+.solution-content .rehab-steps {
+  counter-reset: step;
+  padding: 0;
+}
+.solution-content .rehab-steps .step-card {
+  counter-increment: step;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #E5E5EA;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.solution-content .rehab-steps .step-card:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 1024px) {
+  .solution-content .rehab-steps .step-card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+.solution-content .rehab-steps .step-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #E8F5E9, #D0EBD5);
+  border-bottom: 2px dashed #7DCE87;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.solution-content .rehab-steps .step-thumb::before {
+  content: "▶ 운동 자세 이미지";
+  position: absolute;
+  color: #2E7D32;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 0;
+}
+.solution-content .rehab-steps .step-thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 1024px) {
+  .solution-content .rehab-steps .step-thumb {
+    flex: 0 0 240px;
+    aspect-ratio: auto;
+    border-bottom: none;
+    border-right: 2px dashed #7DCE87;
+  }
+}
+.solution-content .rehab-steps .step-content {
+  padding: 20px 16px;
+}
+@media (min-width: 1024px) {
+  .solution-content .rehab-steps .step-content {
+    flex: 1;
+    padding: 24px;
+  }
+}
+.solution-content .rehab-steps .step-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgb(37.4545454545, 168.5454545455, 70.023715415);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #A5D6A7;
+}
+.solution-content .rehab-steps .step-title::before {
+  content: counter(step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #30D158;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  margin-right: 8px;
+  vertical-align: 1px;
+}
+.solution-content .rehab-steps .step-detail {
+  margin-bottom: 14px;
+}
+.solution-content .rehab-steps .step-detail p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 10px;
+}
+.solution-content .rehab-steps .step-detail p:last-child {
+  margin-bottom: 0;
+}
+.solution-content .rehab-steps .step-detail p .label {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 11px;
+  color: #fff;
+  background: rgb(37.4545454545, 168.5454545455, 70.023715415);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.solution-content .rehab-steps .step-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  padding: 12px 14px;
+  background: #F5FBF6;
+  border-radius: 8px;
+}
+.solution-content .rehab-steps .step-meta li {
+  list-style: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(32.8181818182, 147.6818181818, 61.3557312253);
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 16px;
+  border: 1px solid #C8E6C9;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.solution-content .rehab-steps .step-meta li .meta-icon {
+  font-size: 13px;
 }
 
 .mobile-bottom-nav {

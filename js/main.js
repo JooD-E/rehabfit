@@ -71,10 +71,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
     symptomBtns.forEach(function(btn){
         btn.addEventListener('click', function(){
-            const parentSheet = this.closest('.bottom-sheet');
-            const bodyPart = parentSheet.id.replace('sheet-','');
+            const hash = this.getAttribute('data-hash');
+            if(hash) {
+                window.location.href = 'solution.html#' + hash;
+            } else {
+                window.location.href = 'solution.html';
+            }
+            // const parentSheet = this.closest('.bottom-sheet');
+            // const bodyPart = parentSheet.id.replace('sheet-','');
 
-            window.location.href = 'solution.html#' + bodyPart;
+            // window.location.href = 'solution.html#' + bodyPart;
         });
     });
 

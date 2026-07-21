@@ -14,7 +14,7 @@
     }
 }
 
-// ===== PC 왼쪽 세로 네비=====
+// ===== PC 왼쪽 세로 네비 =====
 .pc-side-nav {
     display: none;
 
@@ -96,7 +96,7 @@
         }
     }
 
-    // ===== 서브탭=====
+    // ===== 서브탭 =====
     .sub-tabs {
         display: flex;
         gap: 8px;
@@ -135,7 +135,7 @@
         }
     }
 
-    // ===== 서브 패널=====
+    // ===== 서브 패널 =====
     .sub-panel {
         display: none;
 
@@ -145,7 +145,7 @@
         }
     }
 
-    // ===== 정보 블록=====
+    // ===== 정보 블록 공통 =====
     .info-block {
         background: #fff;
         border-radius: 16px;
@@ -161,47 +161,328 @@
             color: $color-dark;
         }
 
-        ul, ol {
-            padding-left: 20px;
+        // ===== 증상 블록 =====
+        &.symptom {
+            border-left-color: #FF3B30;
 
-            li {
+            ul {
+                padding-left: 20px;
+
+                li {
+                    list-style: disc;
+                    font-size: 15px;
+                    line-height: 1.6;
+                    color: #555;
+                    margin-bottom: 10px;
+
+                    &:last-child { margin-bottom: 0; }
+                }
+            }
+        }
+
+        // ===== 자가진단 블록 =====
+        &.self-check {
+            border-left-color: #FF9500;
+        }
+
+        // ===== 재활운동 블록 =====
+        &.exercise {
+            border-left-color: $color-secondary;
+        }
+    }
+
+    // ===================================
+    // 자가진단 가이드 문구
+    // ===================================
+    .check-guide {
+        font-size: 13px;
+        line-height: 1.5;
+        color: #7A4E00;
+        background: #FFF4E6;
+        padding: 12px 14px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 3px solid #FF9500;
+    }
+
+    // ===================================
+    // 자가진단 - 이미지 + 체크리스트 (좌우 2단)
+    // ===================================
+    .diagnosis-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @media (min-width: 1024px) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 32px;
+        }
+    }
+
+    .diagnosis-image {
+        width: 100%;
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #FFF4E6, #FFE9D0);
+        border: 2px dashed #FFB84D;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        &::before {
+            content: '📋 자가진단 이미지';
+            position: absolute;
+            color: #B47B2A;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 0;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 1024px) {
+            flex: 0 0 40%;
+            aspect-ratio: 1/1;
+        }
+    }
+
+    .diagnosis-list {
+        padding: 0;
+        flex: 1;
+
+        li {
+            list-style: none;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: $color-light;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: #FFF4E6;
+                border-color: #FFDCA8;
+            }
+
+            &:last-child { margin-bottom: 0; }
+
+            .check-title {
+                display: block;
                 font-size: 15px;
+                font-weight: 700;
+                color: color.adjust(#FF9500, $lightness: -10%);
+                margin-bottom: 10px;
+                padding-bottom: 8px;
+                border-bottom: 1px dashed #FFB84D;
+            }
+
+            p {
+                font-size: 13px;
+                line-height: 1.55;
+                color: #555;
+                margin-bottom: 6px;
+
+                &:last-child { margin-bottom: 0; }
+
+                .label {
+                    display: inline-block;
+                    font-weight: 700;
+                    font-size: 11px;
+                    color: #fff;
+                    background: #FF9500;
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    margin-right: 8px;
+                    vertical-align: 2px;
+                }
+            }
+
+            .check-result {
+                background: #fff;
+                padding: 10px 12px;
+                border-radius: 8px;
+                margin-top: 8px;
+
+                .label {
+                    background: color.adjust(#FF9500, $lightness: -10%);
+                }
+            }
+        }
+    }
+
+    // ===================================
+    // 재활운동 가이드 문구
+    // ===================================
+    .exercise-guide {
+        font-size: 13px;
+        line-height: 1.5;
+        color: #1E5A2E;
+        background: #E8F5E9;
+        padding: 12px 14px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 3px solid $color-secondary;
+    }
+
+    // ===================================
+    // 재활운동 - 스텝 카드 (썸네일 + 상세)
+    // ===================================
+    .rehab-steps {
+        counter-reset: step;
+        padding: 0;
+
+        .step-card {
+            counter-increment: step;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border: 1px solid #E5E5EA;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+
+            &:last-child { margin-bottom: 0; }
+
+            @media (min-width: 1024px) {
+                flex-direction: row;
+                align-items: stretch;
+            }
+        }
+
+        .step-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #E8F5E9, #D0EBD5);
+            border-bottom: 2px dashed #7DCE87;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+
+            &::before {
+                content: '▶ 운동 자세 이미지';
+                position: absolute;
+                color: #2E7D32;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 0;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                position: relative;
+                z-index: 1;
+            }
+
+            @media (min-width: 1024px) {
+                flex: 0 0 240px;
+                aspect-ratio: auto;
+                border-bottom: none;
+                border-right: 2px dashed #7DCE87;
+            }
+        }
+
+        .step-content {
+            padding: 20px 16px;
+
+            @media (min-width: 1024px) {
+                flex: 1;
+                padding: 24px;
+            }
+        }
+
+        .step-title {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            color: color.adjust($color-secondary, $lightness: -10%);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #A5D6A7;
+
+            // 스텝 번호 자동 표시
+            &::before {
+                content: counter(step);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: $color-secondary;
+                color: #fff;
+                font-size: 13px;
+                font-weight: 700;
+                margin-right: 8px;
+                vertical-align: 1px;
+            }
+        }
+
+        .step-detail {
+            margin-bottom: 14px;
+
+            p {
+                font-size: 14px;
                 line-height: 1.6;
                 color: #555;
                 margin-bottom: 10px;
 
                 &:last-child { margin-bottom: 0; }
+
+                .label {
+                    display: inline-block;
+                    font-weight: 700;
+                    font-size: 11px;
+                    color: #fff;
+                    background: color.adjust($color-secondary, $lightness: -10%);
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    margin-right: 8px;
+                    vertical-align: 2px;
+                }
             }
         }
 
-        ul li { list-style: disc; }
-        ol li { list-style: decimal; }
+        // 하단 메타 정보 (⏱ 10초, 🔁 15회, 💪 3세트 등)
+        .step-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 8px;
+            padding: 12px 14px;
+            background: #F5FBF6;
+            border-radius: 8px;
 
-        &.symptom {
-            border-left-color: #FF3B30;
-        }
+            li {
+                list-style: none;
+                font-size: 12px;
+                font-weight: 600;
+                color: color.adjust($color-secondary, $lightness: -15%);
+                background: #fff;
+                padding: 6px 10px;
+                border-radius: 16px;
+                border: 1px solid #C8E6C9;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
 
-        &.self-check {
-            border-left-color: #FF9500;
-        }
-
-        &.exercise {
-            border-left-color: $color-secondary;
-
-            ol li {
-                margin-bottom: 16px;
-
-                strong {
-                    display: block;
-                    font-size: 15px;
-                    color: color.adjust($color-secondary, $lightness: -10%);
-                    margin-bottom: 4px;
-                }
-
-                p {
-                    font-size: 14px;
-                    color: #666;
-                    line-height: 1.5;
+                .meta-icon {
+                    font-size: 13px;
                 }
             }
         }
