@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단계별 재활 가이드 | Re:HAB FIT</title>
+    <link rel="stylesheet" href="scss/reset.css">
+    <link rel="stylesheet" href="scss/guide.css">
+
+    <script src="js/common.js"></script>
+    <script src="js/guide.js"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-inner">
+            <h1 class="logo">
+                <a href="rehabfit.html">RE:HAB <span>FIT</span></a>
+            </h1>
+
+            <button type="button" class="btn-hamburger" id="btn-menu-open" aria-label="메뉴열기">
+                <img src="img/menu.png" alt="메뉴 열기 버튼 이미지">
+            </button>
+        </div>
+    </header>
+
+    <nav class="main-menu">
+        <div class="menu-header">
+            <div class="user-greeting">
+                <p>오늘도 통증 없는 하루,</p>
+                <strong>RE:HAB FIT과 함께하세요</strong>
+            </div>
+
+            <button type="button" class="btn-close" id="btn-menu-close" aria-label="메뉴 닫기">
+                <img src="img/menu-close.png" alt="메뉴 닫기 버튼 이미지">
+            </button>
+        </div>
+
+        <div class="menu-utils">
+            <a href="#" class="btn-record">내 기록 보기</a>
+        </div>
+
+        <ul class="main-gnb">
+            <li class="gnb-item">
+                <a href="#" class="gnb-title">부위별 솔루션</a>
+                <ul class="depth2-list">
+                    <li><a href="solution.html#neck">목</a></li>
+                    <li><a href="solution.html#shoulder">어깨</a></li>
+                    <li><a href="solution.html#spine">척추</a></li>
+                    <li><a href="solution.html#pelvis">골반</a></li>
+                    <li><a href="solution.html#elbow">팔꿈치</a></li>
+                    <li><a href="solution.html#wrist">손목</a></li>
+                    <li><a href="solution.html#knee">무릎</a></li>
+                </ul>
+            </li>
+
+            <li class="gnb-item">
+                <a href="#" class="gnb-title">단계별 재활 가이드</a>
+                <ul class="depth2-list">
+                    <li><a href="guide.html#stage1">1단계 : 통증 완화 및 가동성</a></li>
+                    <li><a href="guide.html#stage2">2단계 : 코어 및 관절 안정화</a></li>
+                    <li><a href="guide.html#stage3">3단계 : 기능적 근력 강화</a></li>
+                </ul>
+            </li>
+
+            <li class="gnb-item">
+                <a href="#" class="gnb-title">일상 자세 교정</a>
+            </li>
+        </ul>
+
+        <ul class="sub-menu">
+            <li><a href="#">자주 묻는 질문 (FAQ)</a></li>
+            <li><a href="#">공지사항</a></li>
+        </ul>
+
+        <div class="menu-footer">
+            <div class="creator-info">
+                <p><strong>퍼블리셔 [조대성]</strong></p>
+                <span>건강운동관리사 경험을 바탕으로 정확한 움직임을 코딩합니다.</span>
+            </div>
+            <div class="portfolio-links">
+                <a href="#" target="_blank" class="link-github">Github</a>
+                <a href="#" target="_blank" class="link-profile">My Profile</a>
+            </div>
+        </div>
+    </nav>
+    <div class="menu-dim" id="menu-dim"></div>
+
+    <main>
+        <div class="guide-wrapper">
+            <div class="guide-intro">
+                <h1 class="page-title">단계별 재활 가이드</h1>
+                <p class="page-desc">부상 직후부터 완전 복귀까지, 시기에 맞는 접근이 회복 속도를 결정합니다.</p>
+            </div>
+
+            <!-- 타임라인 프로그레스 -->
+            <div class="stage-timeline">
+                <ol class="timeline-list">
+                    <li class="timeline-item active" data-stage="stage1">
+                        <button type="button">
+                            <span class="timeline-num">01</span>
+                            <span class="timeline-dot" aria-hidden="true"></span>
+                            <span class="timeline-label">
+                                <strong>통증 완화 및 가동성</strong>
+                                <em>0~2주</em>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="timeline-item" data-stage="stage2">
+                        <button type="button">
+                            <span class="timeline-num">02</span>
+                            <span class="timeline-dot" aria-hidden="true"></span>
+                            <span class="timeline-label">
+                                <strong>코어 및 관절 안정화</strong>
+                                <em>2~6주</em>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="timeline-item" data-stage="stage3">
+                        <button type="button">
+                            <span class="timeline-num">03</span>
+                            <span class="timeline-dot" aria-hidden="true"></span>
+                            <span class="timeline-label">
+                                <strong>기능적 근력 강화</strong>
+                                <em>6주+</em>
+                            </span>
+                        </button>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- 단계별 콘텐츠 -->
+            <div class="stage-content">
+
+                <!-- ============ 1단계 · 통증 완화 및 가동성 ============ -->
+                <section id="stage1" class="stage-panel is-stage1 active">
+
+                    <div class="stage-intro-card">
+                        <div class="stage-header">
+                            <span class="stage-badge">STAGE</span>
+                            <span class="stage-num">01</span>
+                            <h2 class="stage-name">통증 완화 및 가동성</h2>
+                        </div>
+                        <dl class="intro-meta">
+                            <dt>시기</dt>
+                            <dd>통증 발생 직후 ~ 2주 (급성기)</dd>
+                            <dt>상태</dt>
+                            <dd>안정 시에도 통증, 부기·열감 동반 가능. 특정 자세만 취해도 통증 유발.</dd>
+                            <dt>목표</dt>
+                            <dd>조직 회복을 방해하지 않으면서 관절이 굳지 않도록 최소한의 움직임 유지.</dd>
+                        </dl>
+                    </div>
+
+                    <div class="info-block principles-block">
+                        <h3 class="block-label">핵심 원칙</h3>
+                        <ol class="principle-list">
+                            <li>
+                                <strong class="principle-title">통증 없는 범위에서만</strong>
+                                <p class="principle-desc">통증을 참으며 하는 운동은 조직 손상을 악화시킵니다. 아프면 즉시 중단이 원칙.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">근력보다 가동성이 우선</strong>
+                                <p class="principle-desc">약화된 근육을 강화하기 전에 먼저 관절이 정상 각도로 움직일 수 있어야 합니다.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">등척성 수축으로 근 위축 최소화</strong>
+                                <p class="principle-desc">움직이지 않고 힘만 주는 등척성 운동은 관절 부담 없이 근력 저하를 막습니다.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">냉각·거상으로 염증 관리</strong>
+                                <p class="principle-desc">부기와 열감이 있는 급성기에는 아이싱과 환부 거상이 회복 속도를 결정합니다.</p>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="info-block approach-block">
+                        <h3 class="block-label">접근법</h3>
+                        <div class="approach-container">
+                        <div class="approach-column do-column">
+                            <h3 class="approach-title">DO<span class="approach-sub">이렇게 하세요</span></h3>
+                            <ul class="approach-list">
+                            <li class="approach-item">아이싱 (20분 × 하루 3~4회)</li>
+                            <li class="approach-item">통증 없는 범위의 능동적 관절 가동</li>
+                            <li class="approach-item">등척성 근수축 (힘만 주고 5~10초 유지)</li>
+                            <li class="approach-item">심호흡·이완 훈련으로 자율신경 안정</li>
+                            <li class="approach-item">필요 시 보조기·테이핑으로 관절 보호</li>
+                            </ul>
+                        </div>
+
+                        <div class="approach-column dont-column">
+                            <h3 class="approach-title">DON&rsquo;T<span class="approach-sub">피하세요</span></h3>
+                            <ul class="approach-list">
+                            <li class="approach-item">스트레칭을 억지로 늘리기</li>
+                            <li class="approach-item">저항 밴드·중량을 사용한 근력 운동</li>
+                            <li class="approach-item">마사지건·강한 도수 자극</li>
+                            <li class="approach-item">"참을 만하니까" 하고 무리한 자세</li>
+                            <li class="approach-item">뜨거운 찜질 (급성기엔 염증 악화)</li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="info-block exercises-block">
+                        <h3 class="block-label">대표 운동 예시</h3>
+                        <ul class="exercise-brief-list">
+                            <li>
+                                <strong class="exercise-brief-title">관절 가동술 (Active ROM)</strong>
+                                <p class="exercise-brief-desc">통증 없는 범위에서 관절을 부드럽게 움직여 굳음을 예방합니다.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">등척성 수축 (Isometric Hold)</strong>
+                                <p class="exercise-brief-desc">움직임 없이 5~10초간 근수축을 유지해 근력 저하를 막습니다.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">복식 호흡 훈련</strong>
+                                <p class="exercise-brief-desc">천천히 코로 들이쉬고 입으로 내쉬며 자율신경을 안정시킵니다.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">아이싱 & 거상</strong>
+                                <p class="exercise-brief-desc">환부를 심장보다 높게 올리고 얼음찜질로 부기·열감을 조절합니다.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block checklist-block">
+                        <h3 class="block-label">다음 단계로 넘어가는 기준</h3>
+                        <ul class="check-list">
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">안정 시 통증이 완전히 사라졌다</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">관절 가동범위가 반대편의 80% 이상 회복됐다</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">부기·열감이 소실됐다</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">걷기·일상 동작에서 통증이 없다</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </section>
+
+                <!-- ============ 2단계 · 코어 및 관절 안정화 ============ -->
+                <section id="stage2" class="stage-panel is-stage2">
+
+                    <div class="stage-intro-card">
+                        <div class="stage-header">
+                            <span class="stage-badge">STAGE</span>
+                            <span class="stage-num">02</span>
+                            <h2 class="stage-name">코어 및 관절 안정화</h2>
+                        </div>
+                        <dl class="intro-meta">
+                            <dt>시기</dt>
+                            <dd>2~6주 (아급성기)</dd>
+                            <dt>상태</dt>
+                            <dd>안정 시 통증 완화, 그러나 특정 움직임에서 불안정감·근력 저하 지속.</dd>
+                            <dt>목표</dt>
+                            <dd>심부 안정근의 신경근 조절을 회복해 관절이 스스로 안정되도록 훈련.</dd>
+                        </dl>
+                    </div>
+
+                    <div class="info-block principles-block">
+                        <h3 class="block-label">핵심 원칙</h3>
+                        <ol class="principle-list">
+                            <li>
+                                <strong class="principle-title">정적 안정성 → 동적 안정성 순서</strong>
+                                <p class="principle-desc">가만히 자세를 유지하는 것부터 시작해, 흔들림 속에서도 관절이 안정되게 훈련합니다.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">심부근이 겉근육보다 먼저</strong>
+                                <p class="principle-desc">복횡근·다열근·회전근개 같은 심부 안정근이 활성화된 후에 겉근육을 강화해야 합니다.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">저부하 · 고반복 · 정확한 자세</strong>
+                                <p class="principle-desc">이 시기 근력 향상은 신경 적응이 우선. 가벼운 부하로 정확하게 반복하는 것이 핵심.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">좌우 균형 회복이 최우선 과제</strong>
+                                <p class="principle-desc">다친 쪽이 반대쪽만큼 회복되기 전에는 강한 운동으로 진입하지 않습니다.</p>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="info-block approach-block">
+                        <h3 class="block-label">접근법</h3>
+                        <div class="approach-container">
+                        <div class="approach-column do-column">
+                            <h3 class="approach-title">DO<span class="approach-sub">이렇게 하세요</span></h3>
+                            <ul class="approach-list">
+                            <li class="approach-item">코어 안정화 운동 (데드버그, 버드독 등)</li>
+                            <li class="approach-item">체중을 이용한 저부하 등장성 운동</li>
+                            <li class="approach-item">균형 훈련 (양발 → 한 발 서기)</li>
+                            <li class="approach-item">자세·정렬 인지 훈련 (거울 활용)</li>
+                            <li class="approach-item">통증을 관찰하며 점진적 강도 증가</li>
+                            </ul>
+                        </div>
+
+                        <div class="approach-column dont-column">
+                            <h3 class="approach-title">DON&rsquo;T<span class="approach-sub">피하세요</span></h3>
+                            <ul class="approach-list">
+                            <li class="approach-item">무거운 저항으로 하는 근력 운동</li>
+                            <li class="approach-item">반동을 이용한 동적 스트레칭</li>
+                            <li class="approach-item">폭발적·플라이오메트릭 동작</li>
+                            <li class="approach-item">좌우 비대칭이 심한 상태에서 고강도 운동</li>
+                            <li class="approach-item">통증 참으며 억지로 반복 완성</li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="info-block exercises-block">
+                        <h3 class="block-label">대표 운동 예시</h3>
+                        <ul class="exercise-brief-list">
+                            <li>
+                                <strong class="exercise-brief-title">데드버그 (Dead Bug)</strong>
+                                <p class="exercise-brief-desc">요추 안정성을 유지한 채 사지 움직임을 조절하는 코어 훈련의 기본.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">브릿지 (Bridge)</strong>
+                                <p class="exercise-brief-desc">둔근·햄스트링을 활성화하며 고관절 신전 패턴을 회복합니다.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">벽 스쿼트 (Wall Squat)</strong>
+                                <p class="exercise-brief-desc">무릎·고관절 협응력과 하체 자세 인지를 훈련합니다.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">한 발 균형 훈련</strong>
+                                <p class="exercise-brief-desc">발목·고관절 안정성과 고유수용감각을 함께 회복합니다.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block checklist-block">
+                        <h3 class="block-label">다음 단계로 넘어가는 기준</h3>
+                        <ul class="check-list">
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">코어 안정 자세를 30초 이상 흔들림 없이 유지 가능</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">좌우 근력 차이 20% 미만</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">일상 동작에서 불안정감·힘 빠짐 없음</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">계단 오르내리기·앉았다 일어나기가 편안함</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </section>
+
+                <!-- ============ 3단계 · 기능적 근력 강화 ============ -->
+                <section id="stage3" class="stage-panel is-stage3">
+
+                    <div class="stage-intro-card">
+                        <div class="stage-header">
+                            <span class="stage-badge">STAGE</span>
+                            <span class="stage-num">03</span>
+                            <h2 class="stage-name">기능적 근력 강화</h2>
+                        </div>
+                        <dl class="intro-meta">
+                            <dt>시기</dt>
+                            <dd>6주 이후 (회복기 · 복귀기)</dd>
+                            <dt>상태</dt>
+                            <dd>일상은 회복됐으나, 스포츠·직업적 강도에서 약함·피로·경미한 통증 재발.</dd>
+                            <dt>목표</dt>
+                            <dd>복합 관절 움직임과 저항 훈련으로 원래 활동 강도까지 완전 복귀.</dd>
+                        </dl>
+                    </div>
+
+                    <div class="info-block principles-block">
+                        <h3 class="block-label">핵심 원칙</h3>
+                        <ol class="principle-list">
+                            <li>
+                                <strong class="principle-title">근력 → 근지구력 → 파워 순차 강화</strong>
+                                <p class="principle-desc">먼저 최대 근력을 회복하고, 지속력을 만든 뒤, 마지막에 폭발적 파워를 훈련합니다.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">복합 관절 동작 위주로</strong>
+                                <p class="principle-desc">스쿼트·데드리프트·런지·푸시업처럼 여러 관절이 함께 쓰이는 기능적 움직임이 중심.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">스포츠·직업 특성에 맞춰 특화</strong>
+                                <p class="principle-desc">일상 회복에 만족하지 않고 실제 활동 패턴에 맞는 동작을 훈련해야 재발이 예방됩니다.</p>
+                            </li>
+                            <li>
+                                <strong class="principle-title">10% 룰 — 점진적 부하 증가</strong>
+                                <p class="principle-desc">주당 볼륨·강도 증가는 10%를 넘지 않게. 급격한 증가는 재발의 가장 큰 원인입니다.</p>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="info-block approach-block">
+                        <h3 class="block-label">접근법</h3>
+                        <div class="approach-container">
+                        <div class="approach-column do-column">
+                            <h3 class="approach-title">DO<span class="approach-sub">이렇게 하세요</span></h3>
+                            <ul class="approach-list">
+                            <li class="approach-item">복합 관절 근력 운동 (스쿼트·데드리프트·런지)</li>
+                            <li class="approach-item">밴드·중량을 활용한 점진적 저항 훈련</li>
+                            <li class="approach-item">스포츠·직업 특화 움직임 훈련</li>
+                            <li class="approach-item">플라이오메트릭·민첩성 훈련 (마지막 단계)</li>
+                            <li class="approach-item">정기적 재평가로 회복 상태 점검</li>
+                            </ul>
+                        </div>
+
+                        <div class="approach-column dont-column">
+                            <h3 class="approach-title">DON&rsquo;T<span class="approach-sub">피하세요</span></h3>
+                            <ul class="approach-list">
+                            <li class="approach-item">준비운동 없이 바로 고중량 진입</li>
+                            <li class="approach-item">통증을 참으며 무리한 반복</li>
+                            <li class="approach-item">좌우 불균형이 남은 상태에서 고강도 훈련</li>
+                            <li class="approach-item">주당 10% 이상의 급격한 볼륨·강도 증가</li>
+                            <li class="approach-item">부기·통증 재발 신호를 무시하고 지속</li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="info-block exercises-block">
+                        <h3 class="block-label">대표 운동 예시</h3>
+                        <ul class="exercise-brief-list">
+                            <li>
+                                <strong class="exercise-brief-title">스쿼트 · 런지 · 데드리프트</strong>
+                                <p class="exercise-brief-desc">하체 복합 관절 근력의 기본. 자세 완성도가 중량보다 우선입니다.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">푸시업 · 풀업 · 프레스</strong>
+                                <p class="exercise-brief-desc">상체 복합 관절 근력. 견갑골 안정성을 유지하며 시행합니다.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">파머스 워크 · 캐리 계열</strong>
+                                <p class="exercise-brief-desc">코어와 전신을 통합적으로 사용하는 실전 근력 훈련.</p>
+                            </li>
+                            <li>
+                                <strong class="exercise-brief-title">플라이오·민첩성 훈련</strong>
+                                <p class="exercise-brief-desc">점프·방향 전환 등 스포츠 복귀 직전에 시행하는 최종 단계.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block checklist-block">
+                        <h3 class="block-label">완전 복귀 기준</h3>
+                        <ul class="check-list">
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">좌우 근력 차이 10% 미만</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">스포츠·직업 특화 동작을 통증 없이 정상 수행</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">한 발 홉·점프 검사 정상 (기능적 검사 통과)</span>
+                            </li>
+                            <li>
+                                <span class="check-icon" aria-hidden="true"></span>
+                                <span class="check-text">3개월 이상 재발 없이 활동 지속</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <h2 class="footer-logo">
+                    <a href="rehabfit.html">RE:HAB <span>FIT</span></a>
+                </h2>
+
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0);">이용약관</a></li>
+                    <li><a href="javascript:void(0);" class="highlight">개인정보처리방침</a></li>
+                    <li><a href="javascript:void(0);">자주 묻는 질문</a></li>
+                    <li><a href="javascript:void(0);">공지사항</a></li>
+                </ul>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom">
+                <div class="publisher-info">
+                    <p class="info-text">
+                        <span><strong>퍼블리셔</strong> 조대성</span>
+                        <span><strong>이메일</strong> eotjd0095@naver.com</span>
+                    </p>
+
+                    <p class="info-desc">
+                        본 사이트는 포트폴리오 요도로 제작되었으며, 건강운동관리사의 실제 임상 지식과 웹 표준 마크업 기술을 기반으로 구축되었습니다.
+                    </p>
+
+                    <p class="copyright">
+                        &copy; 2026 RE:HAB FIT. All rights reserved.
+                    </p>
+                </div>
+
+                <div class="footer-sns">
+                    <a href="https://github.com/JooD-E/rehabfit.git" target="_blank" class="sns-btn" aria-label="깃허브 바로가기">
+                        <span class="icon-text">Github</span>
+                    </a>
+                    <a href="https://jood95.dothome.co.kr/jds_profile/profile.html" class="sns-btn" aria-label="프로필 포트폴리오 바로가기">
+                        <span class="icon-text">Profile</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

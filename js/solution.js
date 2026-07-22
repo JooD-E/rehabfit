@@ -95,4 +95,49 @@ document.addEventListener('DOMContentLoaded', function(){
 
     activateTabByHash();
     window.addEventListener('hashchange', activateTabByHash);
+
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    const zoomTargets = document.querySelectorAll('.diagnosis-image, .step-thumb');
+
+    function openLightbox(imgScr, imgAlt) {
+        lightboxImg.src = imgScr;
+        lightboxImg.alt = imgAlt;
+        lightboxCaption.textContent = imgAlt;
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+    }
+
+    zoomTargets.forEach(function(target) {
+        target.addEventListener('click', function(){
+            const img = target.querySelector('img');
+            if (img) {
+                openLightbox(img.src, img.alt);
+            }
+        });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if(e.key === "Escape" && lightbox.classList.contains('is-open')){
+            closwLightbox();
+        }
+    });
 });

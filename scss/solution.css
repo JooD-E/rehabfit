@@ -582,6 +582,7 @@ main {
   align-items: center;
   justify-content: center;
   position: relative;
+  cursor: zoom-in;
 }
 .solution-content .diagnosis-image::before {
   content: "📋 자가진단 이미지";
@@ -709,6 +710,7 @@ main {
   justify-content: center;
   position: relative;
   flex-shrink: 0;
+  cursor: zoom-in;
 }
 .solution-content .rehab-steps .step-thumb::before {
   content: "▶ 운동 자세 이미지";
@@ -862,4 +864,80 @@ main {
   .mobile-bottom-nav {
     display: none;
   }
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+.image-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.image-lightbox .lightbox-inner {
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  cursor: default;
+}
+.image-lightbox .lightbox-img {
+  max-width: 100%;
+  max-height: 75vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  background: #fff;
+}
+.image-lightbox.is-open .lightbox-img {
+  transform: scale(1);
+}
+.image-lightbox .lightbox-caption {
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.5;
+  padding: 0 10xp;
+}
+.image-lightbox .lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.image-lightbox .lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+body.lightbox-open {
+  overflow: hidden;
 }/*# sourceMappingURL=solution.css.map */

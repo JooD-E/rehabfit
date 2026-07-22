@@ -1,0 +1,651 @@
+@use "sass:color";
+@use "style" as *;
+
+$stage1-color: #E63946;
+$stage2-color: #F4A261;
+$stage3-color: #2A9D8F;
+
+$text-primary: #1a1a1a;
+$text-secondary: #666;
+$text-tertiary: #999;
+$border-light: #EEE;
+$border-mid: #DDD;
+$page-bg: #F5F6F8;
+$card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+body {
+    background: $page-bg;
+}
+
+.guide-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+
+    @media (min-width: 1024px) {
+        padding: 60px 40px 100px;
+    }
+}
+
+.guide-intro {
+    text-align: center;
+    padding: 24px 0 40px;
+
+    .page-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: $text-primary;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+    }
+
+    .page-desc {
+        font-size: 14px;
+        color: $text-secondary;
+        line-height: 1.6;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 40px 0 64px;
+
+        .page-title {
+            font-size: 34px;
+            margin-bottom: 16px;
+        }
+        .page-desc { font-size: 15px; }
+    }
+}
+
+.stage-timeline {
+    background: #fff;
+    border: 1px solid $border-light;
+    border-radius: 4px;
+    box-shadow: $card-shadow;
+    padding: 32px 20px;
+    margin-bottom: 32px;
+
+    .timeline-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        gap: 8px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 33px;
+            left: 16.66%;
+            right: 16.66%;
+            height: 1px;
+            background: $border-mid;
+            z-index: 0;
+        }
+    }
+
+    .timeline-item {
+        flex: 1;
+        position: relative;
+        z-index: 1;
+
+        button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-family: inherit;
+
+            &:hover .timeline-dot {
+                transform: scale(1.2);
+            }
+        }
+
+        .timeline-num {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: $text-tertiary;
+            transition: color 0.3s ease;
+        }
+
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid $border-mid;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            text-align: center;
+
+            strong {
+                font-size: 12px;
+                font-weight: 600;
+                color: $text-secondary;
+                letter-spacing: -0.01em;
+                line-height: 1.3;
+                transition: color 0.3s ease;
+            }
+            em {
+                font-style: normal;
+                font-size: 11px;
+                color: $text-tertiary;
+                transition: color 0.3s ease;
+            }
+        }
+
+        &.active .timeline-num,
+        &.active .timeline-label strong { color: $text-primary; }
+        &.active .timeline-label em { color: $text-secondary; }
+
+        &.active .timeline-dot {
+            width: 18px;
+            height: 18px;
+        }
+
+        &.active:nth-child(1) .timeline-dot {
+            background: $stage1-color;
+            border-color: $stage1-color;
+            box-shadow: 0 0 0 5px color.change($stage1-color, $alpha: 0.15);
+        }
+        &.active:nth-child(1) .timeline-num { color: $stage1-color; }
+
+        &.active:nth-child(2) .timeline-dot {
+            background: $stage2-color;
+            border-color: $stage2-color;
+            box-shadow: 0 0 0 5px color.change($stage2-color, $alpha: 0.15);
+        }
+        &.active:nth-child(2) .timeline-num { color: $stage2-color; }
+
+        &.active:nth-child(3) .timeline-dot {
+            background: $stage3-color;
+            border-color: $stage3-color;
+            box-shadow: 0 0 0 5px color.change($stage3-color, $alpha: 0.15);
+        }
+        &.active:nth-child(3) .timeline-num { color: $stage3-color; }
+    }
+
+    @media (min-width: 1024px) {
+        padding: 48px 40px;
+        margin-bottom: 48px;
+
+        .timeline-list::before {
+            top: 42px;
+        }
+
+        .timeline-item {
+            button { gap: 14px; }
+
+            .timeline-num { font-size: 13px; }
+            .timeline-dot { width: 18px; height: 18px; }
+
+            &.active .timeline-dot {
+                width: 22px;
+                height: 22px;
+            }
+
+            .timeline-label {
+                strong { font-size: 15px; }
+                em { font-size: 12px; }
+            }
+        }
+    }
+}
+
+.stage-content {
+    .stage-panel {
+        display: none;
+
+        &.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+    }
+}
+
+.info-block {
+    background: #fff;
+    border: 1px solid $border-light;
+    box-shadow: $card-shadow;
+    padding: 32px 24px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+
+    @media (min-width: 1024px) {
+        padding: 48px 40px;
+        margin-bottom: 24px;
+    }
+}
+
+.block-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $text-tertiary;
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid $border-light;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 32px;
+        height: 1px;
+        background: $text-primary;
+    }
+
+    @media (min-width: 1024px) {
+        font-size: 12px;
+        padding-bottom: 24px;
+        margin-bottom: 36px;
+    }
+}
+
+.is-stage1 .block-label::before { background: $stage1-color; }
+.is-stage2 .block-label::before { background: $stage2-color; }
+.is-stage3 .block-label::before { background: $stage3-color; }
+
+.stage-intro-card {
+    background: #fff;
+    border: 1px solid $border-light;
+    box-shadow: $card-shadow;
+    padding: 40px 24px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+
+    .stage-header {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid $border-light;
+
+        .stage-badge {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: $text-tertiary;
+        }
+
+        .stage-num {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .stage-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: $text-primary;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-top: 4px;
+        }
+    }
+
+    .intro-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        dt {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: $text-tertiary;
+            margin-bottom: 6px;
+        }
+
+        dd {
+            font-size: 15px;
+            line-height: 1.65;
+            color: $text-primary;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        padding: 56px 48px;
+        margin-bottom: 24px;
+
+        .stage-header {
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+
+            .stage-num { font-size: 80px; }
+            .stage-name { font-size: 28px; }
+        }
+
+        .intro-meta {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 24px 32px;
+            align-items: baseline;
+
+            dt {
+                margin-bottom: 0;
+                padding-top: 4px;
+            }
+            dd {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.is-stage1 .stage-intro-card .stage-num { color: $stage1-color; }
+.is-stage2 .stage-intro-card .stage-num { color: $stage2-color; }
+.is-stage3 .stage-intro-card .stage-num { color: $stage3-color; }
+
+.principles-block {
+    .principle-list {
+        counter-reset: principle;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        padding: 0;
+
+        li {
+            counter-increment: principle;
+            list-style: none;
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 4px 20px;
+
+            &::before {
+                content: counter(principle, decimal-leading-zero);
+                font-size: 14px;
+                font-weight: 700;
+                color: $text-tertiary;
+                letter-spacing: 0.05em;
+                grid-row: span 2;
+                padding-top: 3px;
+            }
+
+            .principle-title {
+                font-size: 15px;
+                font-weight: 700;
+                color: $text-primary;
+                line-height: 1.4;
+                letter-spacing: -0.01em;
+            }
+            .principle-desc {
+                font-size: 14px;
+                line-height: 1.65;
+                color: $text-secondary;
+            }
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .principle-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px 48px;
+
+            li {
+                grid-template-columns: 48px 1fr;
+
+                &::before { font-size: 16px; }
+                .principle-title { font-size: 16px; }
+                .principle-desc { font-size: 15px; }
+            }
+        }
+    }
+}
+
+.approach-block {
+    .approach-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .approach-column {
+        .approach-title {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            padding-bottom: 14px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+
+            .approach-sub {
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 0;
+                color: $text-tertiary;
+            }
+        }
+
+        .approach-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            li {
+                list-style: none;
+                padding-left: 16px;
+                position: relative;
+                font-size: 14px;
+                line-height: 1.6;
+                color: $text-primary;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 10px;
+                    width: 6px;
+                    height: 1px;
+                    background: currentColor;
+                    opacity: 0.4;
+                }
+            }
+        }
+    }
+
+    .do-column .approach-title { border-color: $stage3-color; color: $stage3-color; }
+    .dont-column .approach-title { border-color: $stage1-color; color: $stage1-color; }
+
+    @media (min-width: 1024px) {
+        .approach-container {
+            flex-direction: row;
+            gap: 60px;
+
+            .approach-column {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+
+        .approach-column .approach-list li { font-size: 15px; }
+    }
+}
+
+.exercises-block {
+    .exercise-brief-list {
+        counter-reset: exercise;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 0;
+
+        li {
+            counter-increment: exercise;
+            list-style: none;
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 4px 20px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid $border-light;
+
+            &::before {
+                content: counter(exercise, decimal-leading-zero);
+                font-size: 14px;
+                font-weight: 700;
+                color: $text-tertiary;
+                letter-spacing: 0.05em;
+                grid-row: span 2;
+                padding-top: 3px;
+            }
+
+            &:last-child {
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+            .exercise-brief-title {
+                font-size: 15px;
+                font-weight: 700;
+                color: $text-primary;
+                line-height: 1.4;
+                letter-spacing: -0.01em;
+            }
+            .exercise-brief-desc {
+                font-size: 14px;
+                line-height: 1.65;
+                color: $text-secondary;
+            }
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .exercise-brief-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px 48px;
+
+            li {
+                grid-template-columns: 48px 1fr;
+                padding-bottom: 0;
+                border-bottom: none;
+
+                &::before { font-size: 16px; }
+                .exercise-brief-title { font-size: 16px; }
+                .exercise-brief-desc { font-size: 15px; }
+            }
+        }
+    }
+}
+
+.checklist-block {
+    .check-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        li {
+            list-style: none;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 4px;
+            border-bottom: 1px solid $border-light;
+            cursor: pointer;
+            transition: padding-left 0.2s ease;
+
+            &:last-child { border-bottom: none; }
+
+            &:hover {
+                padding-left: 8px;
+            }
+
+            .check-icon {
+                flex-shrink: 0;
+                width: 18px;
+                height: 18px;
+                border: 1.5px solid $border-mid;
+                border-radius: 3px;
+                margin-top: 2px;
+                position: relative;
+                transition: all 0.2s;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 4px;
+                    top: 0;
+                    width: 5px;
+                    height: 10px;
+                    border-right: 2px solid #fff;
+                    border-bottom: 2px solid #fff;
+                    transform: rotate(45deg);
+                    opacity: 0;
+                    transition: opacity 0.2s;
+                }
+            }
+
+            .check-text {
+                flex: 1;
+                font-size: 14px;
+                line-height: 1.55;
+                color: $text-primary;
+                transition: color 0.2s;
+            }
+
+            &.is-checked {
+                .check-text {
+                    color: $text-tertiary;
+                    text-decoration: line-through;
+                }
+            }
+        }
+    }
+
+    @mixin checked-color($color) {
+        .check-list li.is-checked .check-icon {
+            background: $color;
+            border-color: $color;
+
+            &::before { opacity: 1; }
+        }
+    }
+}
+
+.is-stage1 .checklist-block {
+    .check-list li.is-checked .check-icon {
+        background: $stage1-color;
+        border-color: $stage1-color;
+        &::before { opacity: 1; }
+    }
+}
+.is-stage2 .checklist-block {
+    .check-list li.is-checked .check-icon {
+        background: $stage2-color;
+        border-color: $stage2-color;
+        &::before { opacity: 1; }
+    }
+}
+.is-stage3 .checklist-block {
+    .check-list li.is-checked .check-icon {
+        background: $stage3-color;
+        border-color: $stage3-color;
+        &::before { opacity: 1; }
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
